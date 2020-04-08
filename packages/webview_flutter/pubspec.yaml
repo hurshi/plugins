@@ -26,3 +26,5 @@ flutter:
         pluginClass: WebViewFlutterPlugin
       ios:
         pluginClass: FLTWebViewFlutterPlugin
+  module:
+    androidX: false
