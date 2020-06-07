@@ -7,7 +7,6 @@ package io.flutter.plugins.pathprovider;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
-import androidx.annotation.NonNull;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -34,20 +33,20 @@ public class PathProviderPlugin implements FlutterPlugin, MethodCallHandler {
   }
 
   @Override
-  public void onAttachedToEngine(@NonNull FlutterPluginBinding binding) {
+  public void onAttachedToEngine(FlutterPluginBinding binding) {
     channel = new MethodChannel(binding.getBinaryMessenger(), "plugins.flutter.io/path_provider");
     context = binding.getApplicationContext();
     channel.setMethodCallHandler(this);
   }
 
   @Override
-  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+  public void onDetachedFromEngine(FlutterPluginBinding binding) {
     channel.setMethodCallHandler(null);
     channel = null;
   }
 
   @Override
-  public void onMethodCall(MethodCall call, @NonNull Result result) {
+  public void onMethodCall(MethodCall call, Result result) {
     switch (call.method) {
       case "getTemporaryDirectory":
         result.success(getPathProviderTemporaryDirectory());
